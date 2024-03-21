@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['namespace' => 'App\Http\Controllers', 'prefix' => '/'], function () {
+    Route::get('/', 'FileController@index')->name('file.index');
+    Route::get('/{fileName}', 'FileController@show')->name('file.show');
 });
